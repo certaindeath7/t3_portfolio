@@ -6,10 +6,9 @@ import { prisma } from "../../../server/db/client";
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session({ session, user }) {
+    async session({ session, token, user }) {
       if (session.user) {
-        session.user.id = user.id;
-        // session.user.role = user.role; <-- put other properties on the session here
+        session.user.id = user.id; // session.user.role = user.role; <-- put other properties on the session here
       }
       return session;
     },

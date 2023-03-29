@@ -1,13 +1,13 @@
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 
 import { env } from "../../../env/server.mjs";
-import { createTRPCContext } from "../../../server/api/trpc";
+import { createContext } from "../../../server/api/context";
 import { appRouter } from "../../../server/api/routers/root";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const nextApiHandler = createNextApiHandler({
   router: appRouter,
-  createContext: createTRPCContext, //cerateContext function runs everytime a request comes in
+  createContext: createContext, //cerateContext function runs everytime a request comes in
   onError:
     env.NODE_ENV === "development"
       ? ({ path, error }) => {

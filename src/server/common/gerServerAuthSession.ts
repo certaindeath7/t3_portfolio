@@ -4,6 +4,7 @@ import { authOptions as nextAuthOptions } from "../../pages/api/auth/[...nextaut
 
 // Next API route example - /pages/api/restricted.ts
 export const getServerAuthSession = async (ctx: {
+  //object declaration
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {

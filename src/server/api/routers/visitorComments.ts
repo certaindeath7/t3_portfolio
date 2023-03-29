@@ -2,7 +2,7 @@ import { z } from "zod";
 import { t, authProcedure } from "../trpc";
 
 export const visitorCommentsRouter = t.router({
-  getAllComments: t.procedure.query(async ({ ctx }) => {
+  getAllComments: authProcedure.query(async ({ ctx }) => {
     try {
       const comments = await ctx.prisma.message.findMany({
         orderBy: {
